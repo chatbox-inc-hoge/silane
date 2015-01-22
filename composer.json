@@ -1,0 +1,21 @@
+{
+    "name": "chatbox/invitation",
+    "type": "project",
+    "description" : "invitation mail transfer",
+    "keywords": [],
+    "license": "MIT",
+    "repositories": [
+    ],
+    "require": {
+        "php": ">=5.4",
+        "illuminate/database": "~4.2.12",
+        "chatbox/tmp-data": "dev-master",
+        "mikakane/migrate": "dev-master"
+    },
+    "autoload":{
+        "psr-4":{
+            "Chatbox\\Invitation\\":"src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
