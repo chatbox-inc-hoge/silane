@@ -26,6 +26,13 @@ $capsule->bootEloquent();
 $eloquent = new \Chatbox\Invitation\Eloquent\TmpMail;
 $provider = new \Chatbox\TmpData\TmpDataProvider($eloquent);
 $inv = new \Chatbox\Invitation\Invitation(null,$provider);
+
+$message = null;
+if($_GET["mode"] === "flush"){
+    $message = "all messages have been flushed";
+}else if($_GET["mode"] === "delete"){
+    $message = "message:HOGEHOGE have been removed";
+}
 ?>
 
 <!doctype html>
@@ -54,8 +61,13 @@ $inv = new \Chatbox\Invitation\Invitation(null,$provider);
 </nav>
 
 <div class="container">
-    <div class="row" style="margin-top:5em">
-        <div class="col-sm-6 col-sm-offset-3">
+    <div class="row">
+        <?php if($message):?>
+        <div class="alert alert-info">
+            <?=$message?>
+        </div>
+        <?php endif;?>
+        <div class="col-sm-6 col-sm-offset-3" style="margin-top:5em">
             <?php if($_SERVER['REQUEST_METHOD'] === "POST"): ?>
                 <?php $inv->send($_POST["mail"],["hoge"=>"piyo"]);?>
                 <div class="well text-center" style="padding:2em 0">
@@ -87,8 +99,6 @@ $inv = new \Chatbox\Invitation\Invitation(null,$provider);
 
                 <?php
                 $list = \Chatbox\Invitation\Eloquent\TmpMail::all();
-                //$list = [];
-                var_dump($list);
                 ?>
 
                 <table class="table table-condensed table-bordered">
@@ -99,17 +109,17 @@ $inv = new \Chatbox\Invitation\Invitation(null,$provider);
                     </tr>
                     <?php foreach($list as $invItem):?>
                         <tr>
-                            <td>hoge</td>
                             <td><?=$invItem->key?></td>
-                            <td><?=$invItem->value?></td>
+                            <td><?=json_encode($invItem->value)?></td>
+                            <td><a href="?mode=delete&key=<?=$invItem->key?>"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
 
                     <?php endforeach;?>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <a href="" class="btn btn-default" data-dismiss="modal">Close</a>
+                <a href="?mode=flush" class="btn btn-primary">flush all</a>
             </div>
         </div>
     </div>
