@@ -1,7 +1,7 @@
 {
-    "name": "chatbox/invitation",
+    "name": "chatbox/album",
     "type": "project",
-    "description" : "invitation mail transfer",
+    "description" : "album - image maganer",
     "keywords": [],
     "license": "MIT",
     "repositories": [
@@ -10,11 +10,14 @@
         "php": ">=5.4",
         "illuminate/database": "~4.2.12",
         "chatbox/tmp-data": "dev-master",
-        "mikakane/migrate": "dev-master"
+        "chatbox/migrate": "dev-master",
+        "symfony/finder": "@stable",
+        "symfony/filesystem": "@stable",
+        "silex/silex": "@stable"
     },
     "autoload":{
         "psr-4":{
-            "Chatbox\\Invitation\\":"src/"
+            "Chatbox\\Album\\":"src/"
         }
     },
     "minimum-stability": "dev"

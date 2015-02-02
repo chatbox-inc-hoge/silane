@@ -18,7 +18,7 @@ return [
     "schema" => [
         "tmp_mail" => \Chatbox\TmpData\SchemaBuilder::getBuilder()
     ],
-//    "includes" => [
-//        "chatbox" => __DIR__."/schema/chatbox.php",
-//    ],
+    "includes" => [
+        "album" => __DIR__."/schema/database.php",
+    ],
 ];
