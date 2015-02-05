@@ -7,7 +7,8 @@ return [
         "album_image" => function(Blueprint $table){
                 $table->unsignedInteger("id",true);
                 $table->string("category");
-                $table->string("filename");
+                $table->string("origin_name");
+                $table->string("hashed_name");
                 $table->unsignedInteger("size");
                 $table->string("mime");
                 $table->string("comment");

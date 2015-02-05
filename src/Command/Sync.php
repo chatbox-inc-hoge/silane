@@ -34,9 +34,10 @@ class Sync extends Base{
 
         foreach ($finder as $file) {
             $album = new \Chatbox\Album\Album();
-            $album->upload($dir.$file->getRelativePathname(),[
-                "category" => $file->getRelativePath()
-            ]);
+	        $origin = $file->getRelativePathname();
+	        $cate = $file->getRelativePath();
+	        $data = file_get_contents($dir.$file->getRelativePathname());
+            $album->upload($origin,$data,$cate)->save();
         }
 	}
 }

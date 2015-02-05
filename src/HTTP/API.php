@@ -29,10 +29,19 @@ class API {
     }
 
     protected function configure(){
-        $this->app["books.controller"] = $this->app->share(function(){
-            return new \Chatbox\Album\HTTP\Route\Book();
+	    $this->app->register(new \Silex\Provider\ServiceControllerServiceProvider());
+
+        $this->app["photo.controller"] = $this->app->share(function(){
+            return new \Chatbox\Album\HTTP\Route\Photo();
         });
-        $this->app->get("/book/list","books.controller:actionList");
+	    $this->app["upload.controller"] = $this->app->share(function(){
+		    return new \Chatbox\Album\HTTP\Route\Upload();
+	    });
+
+        $this->app->get("/photo/list/{category}/","photo.controller:actionList");
+        $this->app->get("/photo/show/{category}/{originName}","photo.controller:actionShow");
+        $this->app->post("/upload/post","upload.controller:actionPost");
+        $this->app->post("/upload/file","upload.controller:actionFile");
     }
 
     public function run(){

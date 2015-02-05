@@ -2,3 +2,5 @@
 /vendor
 /sample/bower_components
 /sample/images
+
+/node_modules

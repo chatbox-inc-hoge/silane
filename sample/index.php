@@ -4,21 +4,16 @@ require __DIR__."/../vendor/autoload.php";
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="albumSample">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
 	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="/bower_components/angular/angular-csp.css"/>
-<!--	<link rel="stylesheet" href="/bower_components/blueimp-file-upload/css/jquery.fileupload.css"/>-->
 
 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="/bower_components/angular/angular.min.js"></script>
-
-<!--	<script src="/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>-->
-<!--	<script src="/bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>-->
-<!--	<script src="/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>-->
 
 	<script src="/common.js"></script>
 </head>
@@ -57,72 +52,15 @@ require __DIR__."/../vendor/autoload.php";
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
+	    <div class="col-sm-12" data-ng-controller="imageListController">
 
 <!--            <div class="alert alert-danger">-->
 <!--                <strong>hogehoge</strong>-->
 <!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet aperiam architecto autem delectus deleniti et exercitationem fuga ipsam magni molestiae nesciunt nostrum perferendis provident quidem quo, similique vel voluptate.</p>-->
 <!--            </div>-->
-
-            <form class="form-inline">
-                <div class="form-group">
-                    <label>Category</label>
-                    <select class="form-control" name="" id="">
-                        <option value="">hogehoge</option>
-                        <option value="">hogehoge</option>
-                        <option value="">hogehoge</option>
-                        <option value="">hogehoge</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control">
-                </div>
-                <a class="btn btn-default" href="">add New Category</a>
-            </form>
-
-            <div role="tabpanel" style="margin-top: 1em;">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#SimpleUploadTab" data-toggle="tab">SimpleUpload</a></li>
-                    <li role="presentation"><a href="#MultipleUploadTab" data-toggle="tab">MultipleUpload</a></li>
-                    <li role="presentation"><a href="#ImageListTab" data-toggle="tab">ImageList</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="SimpleUploadTab">
-                        <div class="page-header">
-                            <h2>Upload New Image</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, beatae consequatur eius enim, exercitationem, explicabo facilis fuga libero non perspiciatis quas recusandae reiciendis sint tempora tenetur totam velit voluptas voluptate.</p>
-                        </div>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" class="form-control" placeholder="Jane Doe">
-                            </div>
-                            <div class="form-group">
-                                <label>File</label>
-	                            <!-- The fileinput-button span is used to style the file input field as button -->
-							    <span class="btn btn-success fileinput-button">
-							        <i class="glyphicon glyphicon-plus"></i>
-							        <span>Select files...</span>
-							        <!-- The file input field used as target for the file upload widget -->
-							        <input id="fileupload" type="file" name="files[]" multiple>
-							    </span>
-<!--                                <input type="file" class="form-control" placeholder="jane.doe@example.com">-->
-                            </div>
-                            <button type="submit" class="btn btn-default">Send invitation</button>
-                        </form>
-
-                    </div>
-                    <div class="tab-pane" id="MultipleUploadTab">
-
-                    </div>
-                    <div class="tab-pane" id="ImageListTab">
-
-                    </div>
-                </div>
-
-            </div>
-
-
+            <div id="SimpleUploadTab" data-ng-include="'/partial/simpleUpload.html'"></div>
+            <div id="ImageListTab" data-ng-include="'/partial/imageList.html'"
+                ></div>
         </div>
     </div>
 
