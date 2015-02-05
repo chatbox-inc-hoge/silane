@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "brandonwamboldt/utilphp",
-            "version": "1.0.7",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brandonwamboldt/utilphp.git",
@@ -58,12 +58,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chatbox-inc/migrate.git",
-                "reference": "c581c944a3b4f55511000df3f6b4b4b6ff43c289"
+                "reference": "81747393942dbf4268c7d8bdbf482a5963f0e582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chatbox-inc/migrate/zipball/c581c944a3b4f55511000df3f6b4b4b6ff43c289",
-                "reference": "c581c944a3b4f55511000df3f6b4b4b6ff43c289",
+                "url": "https://api.github.com/repos/chatbox-inc/migrate/zipball/81747393942dbf4268c7d8bdbf482a5963f0e582",
+                "reference": "81747393942dbf4268c7d8bdbf482a5963f0e582",
                 "shasum": ""
             },
             "require": {
@@ -94,7 +94,7 @@
                     "email": "mikakane2@gmail.com"
                 }
             ],
-            "time": "2015-01-31 18:12:42"
+            "time": "2015-02-02 11:58:01"
         },
         {
             "name": "chatbox/phputil",
@@ -102,12 +102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chatbox-inc/phputil.git",
-                "reference": "44d36aadc7b14368420dfa74473238d98b778035"
+                "reference": "f6cb071a9db0099410f98967e6c818556b43fedf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chatbox-inc/phputil/zipball/44d36aadc7b14368420dfa74473238d98b778035",
-                "reference": "44d36aadc7b14368420dfa74473238d98b778035",
+                "url": "https://api.github.com/repos/chatbox-inc/phputil/zipball/f6cb071a9db0099410f98967e6c818556b43fedf",
+                "reference": "f6cb071a9db0099410f98967e6c818556b43fedf",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "MIT"
             ],
             "description": "kbec authenticate provider",
-            "time": "2015-02-01 13:58:15"
+            "time": "2015-02-03 13:02:36"
         },
         {
             "name": "chatbox/tmp-data",
@@ -802,7 +802,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
@@ -849,7 +849,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
@@ -1151,7 +1151,6 @@
         "silex/silex": 0
     },
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4"
     },

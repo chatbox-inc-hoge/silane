@@ -8,7 +8,19 @@ require __DIR__."/../vendor/autoload.php";
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <?= \Chatbox\CDN::fullset();?>
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/bower_components/angular/angular-csp.css"/>
+<!--	<link rel="stylesheet" href="/bower_components/blueimp-file-upload/css/jquery.fileupload.css"/>-->
+
+	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower_components/angular/angular.min.js"></script>
+
+<!--	<script src="/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>-->
+<!--	<script src="/bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>-->
+<!--	<script src="/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>-->
+
+	<script src="/common.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -21,7 +33,7 @@ require __DIR__."/../vendor/autoload.php";
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">album</a>
+            <a class="navbar-brand" href="#">UploadTest</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,10 +59,10 @@ require __DIR__."/../vendor/autoload.php";
     <div class="row">
         <div class="col-sm-12">
 
-            <div class="alert alert-danger">
-                <strong>hogehoge</strong>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet aperiam architecto autem delectus deleniti et exercitationem fuga ipsam magni molestiae nesciunt nostrum perferendis provident quidem quo, similique vel voluptate.</p>
-            </div>
+<!--            <div class="alert alert-danger">-->
+<!--                <strong>hogehoge</strong>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet aperiam architecto autem delectus deleniti et exercitationem fuga ipsam magni molestiae nesciunt nostrum perferendis provident quidem quo, similique vel voluptate.</p>-->
+<!--            </div>-->
 
             <form class="form-inline">
                 <div class="form-group">
@@ -87,7 +99,14 @@ require __DIR__."/../vendor/autoload.php";
                             </div>
                             <div class="form-group">
                                 <label>File</label>
-                                <input type="file" class="form-control" placeholder="jane.doe@example.com">
+	                            <!-- The fileinput-button span is used to style the file input field as button -->
+							    <span class="btn btn-success fileinput-button">
+							        <i class="glyphicon glyphicon-plus"></i>
+							        <span>Select files...</span>
+							        <!-- The file input field used as target for the file upload widget -->
+							        <input id="fileupload" type="file" name="files[]" multiple>
+							    </span>
+<!--                                <input type="file" class="form-control" placeholder="jane.doe@example.com">-->
                             </div>
                             <button type="submit" class="btn btn-default">Send invitation</button>
                         </form>

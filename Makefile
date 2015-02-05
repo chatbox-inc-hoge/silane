@@ -1,2 +1,2 @@
 server:
-	php -S localhost:9000 -t sample
+	php -S localhost:9200 -t sample
