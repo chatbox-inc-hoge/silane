@@ -23,7 +23,7 @@ class Album {
     protected $baseDir;
 	protected $httpPath;
 
-    public function __construct(){
+    public function __construct(array $param=[]){
         $this->baseDir = __DIR__."/../sample/images/";
         $this->httpPath = "/images/";
         $config = [
@@ -122,7 +122,4 @@ class Album {
 	public function redirect(\Chatbox\Album\Eloquent\Image $image){
 		HTTP::redirect($this->getHttpPath($image));
 	}
-
-
-
 } 
