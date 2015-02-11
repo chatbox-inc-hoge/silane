@@ -2,19 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: t.goto
- * Date: 2015/02/10
- * Time: 21:01
+ * Date: 2015/02/12
+ * Time: 20:00
  */
 
-namespace Chatbox\Silane;
+namespace Chatbox\Silane\Providers;
 
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
-class Config extends \Chatbox\Config\Config implements ServiceProviderInterface{
-
-
+class EloquentServiceProvider implements ServiceProviderInterface{
 
 	/**
 	 * Registers services on the given app.
@@ -26,8 +24,6 @@ class Config extends \Chatbox\Config\Config implements ServiceProviderInterface{
 	 */
 	public function register(Application $app)
 	{
-		$this->load("config");
-		$app["config"] = $this;
 	}
 
 	/**
@@ -39,7 +35,6 @@ class Config extends \Chatbox\Config\Config implements ServiceProviderInterface{
 	 */
 	public function boot(Application $app)
 	{
-		// TODO: Implement boot() method.
 	}
 
 

@@ -6,29 +6,29 @@
  * Time: 20:31
  */
 
-namespace Chatbox\Silane;
+namespace Chatbox\Silane\Providers;
 
 
 use Chatbox\Arr;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
-class Env implements ServiceProviderInterface{
+class EnvServiceProvider implements ServiceProviderInterface{
 
-	static $envKey = "MYAPP_ENV";
+	protected $name;
 
-	public $name;
-
-	function __construct($name=null)
+	function __construct(array $param = [])
 	{
-		$this->name = $name?:$this->detect(static::$envKey,"development");
+		$key = Arr::get($param,"key");
+		$key = Arr::get($param,"default");
+		$this->name = $this->get($key,"development");
 	}
-
 
 	protected function get($key,$default=null){
 		$source = (php_sapi_name() === "cli-server")?$_ENV:$_SERVER;
 		return Arr::get($source,$key,$default);
 	}
+
 	/**
 	 * Registers services on the given app.
 	 *
@@ -40,22 +40,6 @@ class Env implements ServiceProviderInterface{
 	public function register(Application $app)
 	{
 		$app["env"] = $this;
-	}
-
-	protected function setUpConfig(Application $app){
-		if($config = $app["config.dir"]){
-			!is_array($config) && ($config = [$config]);
-			$baseDirs = [];
-			foreach($config as $dirPath){
-				$baseDirs[] = $dirPath;
-				$baseDirs[] = $dirPath.$this->name."/";
-			}
-		}else{
-			throw new Exception("invalid you must set config.dir");
-		}
-
-		$app->register(new Config([],$baseDirs));
-
 	}
 
 	/**
