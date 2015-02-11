@@ -8,16 +8,12 @@
     ],
     "require": {
         "php": ">=5.4",
-        "illuminate/database": "~4.2.12",
-        "chatbox/tmp-data": "dev-master",
-        "chatbox/migrate": "dev-master",
-        "symfony/finder": "@stable",
-        "symfony/filesystem": "@stable",
+        "chatbox/phputil": "dev-master",
         "silex/silex": "@stable"
     },
     "autoload":{
         "psr-4":{
-            "Chatbox\\Album\\":"src/"
+            "Chatbox\\Silane\\":"src/"
         }
     },
     "minimum-stability": "dev"
