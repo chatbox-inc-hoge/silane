@@ -8,8 +8,15 @@
 - 使い勝手の悪いsilex
 - いざとなったらスタブ的なことすればなんとかなる(スケーラビリティ!!)
 
-
 - `$app["hoge"]`で取り出す時の気持ち悪さを解決したい。
+
+## 構想
+
+- silex に設定ファイルを埋め込む。
+- configはsilex valueではない(DIコンテナを汚染しない)。
+- configはsilane provider経由でのみ参照可能。
+  (つまりあらゆるConfigはsilaneProviderのパラメータとしてのみ参照される)
+- providerの役割はサービスの初期化。providerそのものはサービスではない。
 
 
 ## Schema
