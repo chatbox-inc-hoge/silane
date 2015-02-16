@@ -18,54 +18,31 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class Silane{
 	/** @var Application */
-	private $app;
+	protected $app;
 
 	/** @var Config */
-	private $config;
+	protected $config;
 
 	function __construct(Config $config)
 	{
 		$this->config = $config;
+		$this->app = $this->forgeSilex();
+		$this->configure();
 	}
 
-	/**
-	 * @return Application
-	 */
-	public function app(){
-		(!$this->app) && ($this->app = $this->bootUpSilex());
-		return $this->app;
-	}
-
-	/**
-	 * create & configure silex application
-	 * @return Application
-	 */
-	protected function bootUpSilex(){
-		$app = new Application($this->config["silex"]);
-		$this->configure($app);
-		return $app;
-	}
-
-	/**
-	 * @return Config
-	 */
-	public function config(){
-		return $this->config;
+	protected function forgeSilex(){
+		return new Application();
 	}
 
 	/**
 	 * App生成時に一度だけコールされる。
 	 * @param Application $app
 	 */
-	public function configure(Application &$app){
-		foreach($this->config["providers"] as $name => $provider){
-			$app->register(new $provider());
-		}
-
+	protected function configure(){
 	}
 
 	public function run(Request $request = null){
-		$this->app()->run($request);
+		$this->app->run($request);
 	}
 
 
