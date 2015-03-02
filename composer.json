@@ -9,7 +9,7 @@
     "require": {
         "php": ">=5.4",
         "chatbox/phputil": "dev-master",
-        "silex/silex": "@stable"
+        "silex/silex": "1.2.3"
     },
     "autoload":{
         "psr-4":{
