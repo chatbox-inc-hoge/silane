@@ -11,6 +11,11 @@ namespace Chatbox\Silane\Response\JSON;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * Class ResponseOK
+ * @package Chatbox\Silane\Response\JSON
+ * @deprecated
+ */
 class ResponseOK extends JsonResponse{
 
 	static public function create($data = null, $status = 200, $headers = array())
