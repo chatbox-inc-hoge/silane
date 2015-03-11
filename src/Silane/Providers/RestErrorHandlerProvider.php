@@ -29,14 +29,6 @@ class RestErrorHandlerProvider implements ServiceProviderInterface{
 			throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
 		});
 		$app->error(function (\Exception $e) {
-			switch ($e->getCode()) {
-				case 404:
-					$message = 'The requested page could not be found.';
-					break;
-				default:
-					$message = 'We are sorry, but something went terribly wrong.';
-			}
-
 			return JsonStatusResponse::error($e);
 		});
 	}

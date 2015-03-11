@@ -2,50 +2,43 @@
 
 ## 機能
 
-- silex ベースのスキャフォルド
-- pimpleの中身がカオスになりがちなのでアクセスを制限。
-- pimpleをグローバルにしたい誘惑に駆られるので、カプセル化
-- 使い勝手の悪いsilex
-- いざとなったらスタブ的なことすればなんとかなる(スケーラビリティ!!)
+- silex 拡張
+- 設定ファイルからsilexの構成を制御できる。
 
-- `$app["hoge"]`で取り出す時の気持ち悪さを解決したい。
+## Usage
 
-## 構想
+````
+use Chatbox\Silane;
+use Chatbox\Config\Config;
 
-- silex に設定ファイルを埋め込む。
-- configはsilex valueではない(DIコンテナを汚染しない)。
-- configはsilane provider経由でのみ参照可能。
-  (つまりあらゆるConfigはsilaneProviderのパラメータとしてのみ参照される)
-- providerの役割はサービスの初期化。providerそのものはサービスではない。
+$config = new Config();
 
+$silane = new Silane();
+$silane->setConfig($config);
+$silane->run();
+````
 
 ## Schema
 
-silane.config : 設定コンテナ
+silane.silex : silex向け投入データ
 
-silane.configLoader : 設定コンテナからのローダ
+silane.controllers : mountに渡されるデータ
 
-silane.modules
+silane.providers : registerに渡されるデータ
 
-## 使い方
+## Providers
 
-````
+### Chatbox\Silane\Providers\BootEloquentProvider
 
-class MyApp extends Silane{
-	...
-}
+設定`database.default`からEloquentの初期設定を行う。
 
-define("SILANE_DIR")
-$app = new MyApp();
+### Chatbox\Silane\Providers\RestErrorHandlerProvider
 
-$app->deploy("config"); //予約済みモジュールは名前のみでOK
-$app->deploy("auth",__DIR__."/../auth/"); //モジュールのマウント
+エラー報告の例外変換と、エラーハンドラのJSONレスポンス対応を行う。
 
-// $app = MyApp::load("config")->deploy("auth",__DIR__."//")
+## Misc
 
-````
+### Chatbox\Silane\Response\JsonStatusResponse
 
-## Application
-
-名前空間を持った一つの構成ファイル群
+JSONレスポンスの生成
 
