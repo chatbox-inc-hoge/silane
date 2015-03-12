@@ -19,6 +19,21 @@ class Silane extends Application{
     }
 
 	public function setConfig(Config $config){
+		if($envArr = $config->get("env",[])){
+			foreach($envArr as $env){
+				if($env instanceof Env){
+					$env->run();
+				}else{
+					throw new \DomainException("hoge");
+				}
+			}
+		}
+
+		var_dump($config->toArray());
+
+		exit;
+
+
 		$this["config"] = $config;
 
 		foreach($config->get("silane.silex",[]) as $key=>$value){
