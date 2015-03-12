@@ -22,18 +22,12 @@ class Silane extends Application{
 		if($envArr = $config->get("env",[])){
 			foreach($envArr as $env){
 				if($env instanceof Env){
-					$env->run();
+					$env->run($config);
 				}else{
-					throw new \DomainException("hoge");
+					throw new \DomainException("config.env entry must be instance of \\Chatbox\\Env");
 				}
 			}
 		}
-
-		var_dump($config->toArray());
-
-		exit;
-
-
 		$this["config"] = $config;
 
 		foreach($config->get("silane.silex",[]) as $key=>$value){
